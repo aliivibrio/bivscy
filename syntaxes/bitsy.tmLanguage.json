@@ -1,0 +1,409 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Bitsy",
+    "patterns": [
+        {
+            "name": "comment.line.number-sign.bitsy",
+            "match": "^#(.*)$"
+        },
+        {
+            "name": "roomFormat.bitsy",
+            "begin": "^(!) (ROOM_FORMAT)",
+            "end": "(\\d+)$",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.bang.bitsy"
+                },
+                "1": {
+                    "name": "variable.language.roomFormat"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "constant.numeric.roomFormat.bitsy"
+                }
+            }
+        },
+        {
+            "name": "meta.function.palette.section.bitsy",
+            "begin": "^(PAL)(.+)$",
+            "end": "^$",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.sectiontype.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.section.bitsy"
+                }
+            },
+            "patterns": [
+                { 
+                    "include": "#section_name" 
+                },
+                {
+                    "include": "#rgb"
+                },
+                {
+                    "name": "invalid.illegal.not-palette-data",
+                    "match": ".+"
+                }
+            ]
+        },
+        {
+            "name": "meta.function.dialog.section.bitsy",
+            "begin": "^(DLG)(.+)$",
+            "end": "^(NAME)\\s(.+)$",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.sectiontype.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.section.bitsy"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "keyword.name.bitsy"
+                },
+                "2": {
+                    "name": "string.unquoted.sectionname.bitsy"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#dialog"
+                }
+            ]
+        },
+        {
+            "name": "meta.function.room.section.bitsy",
+            "begin": "^(ROOM)(.+)$",
+            "end": "^$",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.sectiontype.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.section.bitsy"
+                }
+            },
+            "patterns": [
+                { 
+                    "include": "#section_name" 
+                },
+                {
+                    "include": "#palette_link"
+                },
+                {
+                    "include": "#comma_separated"
+                },
+                {
+                    "include": "#room_exit"
+                },
+                {
+                    "name": "invalid.illegal.not-palette-data",
+                    "match": ".+"
+                }
+            ]
+        },
+        {
+            "name": "meta.function.sprite.section.bitsy",
+            "begin": "^(SPR)(.+)$",
+            "end": "^$",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.sectiontype.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.section.bitsy"
+                }
+            },
+            "patterns": [
+                { 
+                    "include": "#section_name" 
+                },
+                {
+                    "include": "#position_link"
+                },
+                {
+                    "include": "#binary_data"
+                },
+                {
+                    "include": "#dialog_link"
+                },
+                {
+                    "include": "#animation_separator"
+                },
+                {
+                    "name": "invalid.illegal.not-sprite-data",
+                    "match": ".+"
+                }
+            ]
+        },
+        {
+            "name": "meta.function.item.section.bitsy",
+            "begin": "^(ITM)(.+)$",
+            "end": "^$",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.sectiontype.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.section.bitsy"
+                }
+            },
+            "patterns": [
+                { 
+                    "include": "#section_name" 
+                },
+                {
+                    "include": "#binary_data"
+                },
+                {
+                    "include": "#dialog_link"
+                },                
+                {
+                    "include": "#animation_separator"
+                },
+                {
+                    "name": "invalid.illegal.not-item-data",
+                    "match": ".+"
+                }
+            ]
+        },
+        {
+            "name": "meta.function.tile.section.bitsy",
+            "begin": "^(TIL)(.+)$",
+            "end": "^$",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.til.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.section.bitsy"
+                }
+            },
+            "patterns": [
+                { "include": "#section_name" },
+                { "include": "#binary_data"},
+                {
+                    "name": "wall.section.bitsy",
+                    "begin": "^(WAL)\\s(true|false)",
+                    "end": ".*",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "support.type.wal.bitsy"
+                        },
+                        "2": {
+                            "name": "constant.language.bool.bitsy"
+                        }
+                    }
+                },                
+                {
+                    "include": "#animation_separator"
+                },
+                {
+                    "name": "invalid.illegal.not-tile-data",
+                    "match": ".+"
+                }
+            ]
+        },
+        {
+            "name": "meta.function.var.section.bitsy",
+            "begin": "^(VAR)(.+)$",
+            "end": "^$",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.var.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.section.bitsy"
+                }
+            },
+            "patterns": [
+                {
+                    "name" : "constant.other.var.section.bitsy",
+                    "match": "(.+)"
+                }
+            ]
+        }       
+        ,{
+            "name": "string.unquoted.freetext.bitsy",
+            "match": "(.+)"
+        }
+    ],
+    "repository": {
+        "rgb": {
+            "name": "rgb.palette.section.bitsy",
+            "match": "^(\\d+),(\\d+),(\\d+)$",
+            "captures": {
+                "1": {
+                    "name": "constant.red.rgb.palette.section.bitsy"
+                },
+                "2": {
+                    "name": "constant.green.rgb.palette.section.bitsy"
+                },
+                "3": {
+                    "name": "constant.blue.rgb.palette.section.bitsy"
+                }
+            }
+        },
+        "palette_link":  {
+            "name": "paletteLink.section.bitsy",
+            "begin": "^(PAL)\\s(.+)",
+            "end": ".*",
+            "beginCaptures": {
+                "1": {
+                    "name": "support.function.pal.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.function.paletteLink.bitsy"
+                }
+            }
+        },
+        "comma_separated": {
+            "name": "commasep.bitsy",
+            "begin": "^([0-9a-z]+),",
+            "end": ",([0-9a-z]+)$",
+            "beginCaptures": {
+                "1": {
+                    "name": "constant.character.item.bitsy"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "constant.character.item.bitsy"
+                }
+            },
+            "patterns": [
+                {
+                    "name": "constant.character.item.bitsy",
+                    "match": "[0-9a-z]+"
+                }
+            ]
+        },
+        "section_name": {
+            "name": "name.section.bitsy",
+            "begin": "^(NAME)\\s(.*)",
+            "end": ".*",
+            "beginCaptures": {
+                "1": {
+                    "name": "support.type.name.bitsy"
+                },
+                "2": {
+                    "name": "string.unquoted.sectionname.bitsy"
+                }
+            }
+        },
+
+        "binary_data": {
+            "name": "constant.other.binData.section.bitsy",
+            "match": "^(0|1)+$"
+        },
+        "dialog": {
+            "name": "meta.dialog.bitsy",
+            "patterns": [
+            {
+                "include": "#dialog_block"
+            },
+            {
+                "include": "#dialog_line"
+            }
+            ]
+        },
+        "dialog_line": {
+            "name" : "string.line.dialog.section.bitsy",
+            "begin": "^",
+            "end": "$",
+            "patterns": [
+                {
+                    "name": "support.function.dialog.section.bitsy",
+                    "match": "\\{(.*?)\\}"
+                }
+            ]
+        },
+        "dialog_block" : {
+            "name": "string.triple.dialog.section.bitsy",
+            "begin": "\"\"\"",
+            "end": "\"\"\""
+        },
+        "position_link": {
+            "name": "position.section.bitsy",
+            "match": "^(POS)\\s(\\d+)\\s(\\d+),(\\d+)",
+            "captures": {
+                "1": {
+                    "name": "support.type.pos.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.function.room.position.bitsy"
+                },
+                "3": {
+                    "name": "constant.numeric.x.position.bitsy"   
+                },
+                "4": {
+                    "name": "constant.numeric.y.position.bitsy"
+                }
+            }
+        },
+        "dialog_link": {
+            "name": "dialog.link.bitsy",
+            "begin": "^(DLG)\\s(.+)",
+            "end": ".*",
+            "beginCaptures": {
+                "1": {
+                    "name": "support.function.dlg.bitsy"
+                },
+                "2": {
+                    "name": "entity.name.function.dialog.bitsy"
+                }
+            }
+        },
+        "animation_separator":  {
+            "name": "keyword.animation_mark.bitsy",
+            "match": "^\\>$"
+        },
+        "room_exit": {
+            "name": "exit.room.section.bitsy",
+            "match": "^(EXT)\\s(\\d+),(\\d+)\\s(.+)\\s(\\d+),(\\d+)(\\s(FX)\\s(\\w+))?(\\s(DLG)\\s(\\w+))?",
+            "captures": {
+                "1": {
+                    "name": "support.type.exit.bitsy"
+                },
+                "2": {
+                    "name": "constant.numeric.x.source.exit.bitsy"
+                },
+                "3": {
+                    "name": "constant.numeric.y.source.exit.bitsy"
+                },
+                "4": {
+                    "name": "entity.name.function.target.exit.bitsy"
+                },
+                "5": {
+                    "name": "constant.numeric.x.target.exit.bitsy"
+                },
+                "6": {
+                    "name": "constant.numeric.y.target.exit.bitsy"
+                },
+                "7": {
+                    "name": "fx.exit.room.bitsy"
+                },
+                "8": {
+                    "name": "support.function.fx.exit.room.bitsy"
+                },
+                "9": {
+                    "name": "support.constant.fx.exit.room.bitsy"
+                },
+                "10": {
+                    "name": "dlg.exit.room.bitsy"
+                },
+                "11": {
+                    "name": "keyword.dlg.exit.room.bitsy"
+                },
+                "12": {
+                    "name": "entity.name.function.dlg.exit.bitsy"
+                }
+            }
+        }
+    },
+    "scopeName": "source.bitsy"
+}

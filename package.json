@@ -1,0 +1,39 @@
+{
+    "name": "bivscy",
+    "displayName": "bivscy",
+    "description": "VS Code support for Bitsy Game Maker data files",
+    "version": "0.0.1",
+    "publisher": "Aliivibrio",
+    "icon": "images/logo.png",
+    "repository": {
+
+        "type": "git",
+        "url": "https://aliivibrio.github.com/bivscy.git"
+    },
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "bitsy",
+            "aliases": ["Bitsy", "bitsy"],
+            "extensions": [".bitsy"],
+            "configuration": "./language-configuration.json"
+        }],
+        "iconThemes": [
+            {
+                "id": "bitsycat",
+                "label": "Bitsycat",
+                "path": "./images/bitsycat-icon-theme.json"
+            }
+        ],
+        "grammars": [{
+            "language": "bitsy",
+            "scopeName": "source.bitsy",
+            "path": "./syntaxes/bitsy.tmLanguage.json"
+        }]
+    }
+}
