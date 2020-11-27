@@ -23,13 +23,6 @@
             "extensions": [".bitsy"],
             "configuration": "./language-configuration.json"
         }],
-        "iconThemes": [
-            {
-                "id": "bitsycat",
-                "label": "Bitsycat",
-                "path": "./images/bitsycat-icon-theme.json"
-            }
-        ],
         "grammars": [{
             "language": "bitsy",
             "scopeName": "source.bitsy",
