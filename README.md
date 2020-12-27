@@ -3,6 +3,8 @@
 Bivscy is a Visual Studio Code extension which provides a language mode for game data used in the
 Bitsy Game Maker (https://ledoux.itch.io/bitsy).
 
+[Extension Home Page](https://marketplace.visualstudio.com/items?itemName=Aliivibrio.bivscy)
+
 ![screenshot of highlighted Bitsy game data](https://raw.githubusercontent.com/aliivibrio/bivscy/main/images/bivscy-screen.png)
 
 ## Features
@@ -19,6 +21,10 @@ Bitsy Game Maker (https://ledoux.itch.io/bitsy).
 
 ## Release Notes
 
-### 0.0.1
+### 0.0.1 (11/26/2020)
 
 Initial release, with basic syntax highlighting.
+
+### 0.0.2 (12/28/2020)
+
+Fix https://github.com/aliivibrio/bivscy/issues/1

@@ -101,6 +101,9 @@
                     "include": "#room_exit"
                 },
                 {
+                    "include": "#item_link"
+                },
+                {
                     "name": "invalid.illegal.not-palette-data",
                     "match": ".+"
                 }
@@ -135,7 +138,7 @@
                     "include": "#animation_separator"
                 },
                 {
-                    "name": "invalid.illegal.not-sprite-data",
+                    "name": "invalid.illegal.not-room-data",
                     "match": ".+"
                 }
             ]
@@ -355,6 +358,15 @@
                 },
                 "2": {
                     "name": "entity.name.function.dialog.bitsy"
+                }
+            }
+        },
+        "item_link": {
+            "name": "item.link.bitsy",
+            "match": "^(ITM)\\s(.+)\\s(\\d),(\\d)",
+            "captures": {
+                "1": {
+                    "name": "support.function.item.bitsy"
                 }
             }
         },
