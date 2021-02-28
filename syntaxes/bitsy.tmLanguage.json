@@ -363,7 +363,7 @@
         },
         "item_link": {
             "name": "item.link.bitsy",
-            "match": "^(ITM)\\s(.+)\\s(\\d),(\\d)",
+            "match": "^(ITM)\\s(.+)\\s(\\d+),(\\d+)",
             "captures": {
                 "1": {
                     "name": "support.function.item.bitsy"
