@@ -28,3 +28,7 @@ Initial release, with basic syntax highlighting.
 ### 0.0.2 (12/28/2020)
 
 Fix https://github.com/aliivibrio/bivscy/issues/1
+
+### 0.0.3 (2/28/2021)
+
+Fix issue with highlighting of image positions.
